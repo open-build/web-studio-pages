@@ -14,8 +14,12 @@ This is a starter kit to visually edit a GitHub Pages static site using [Webstud
 ### 1. Clone and Build
 
 ```bash
-docker build --build-arg GIT_REPO=https://github.com/your-username/your-site.git -t webstudio-editor .
-docker run -p 5173:5173 webstudio-editor
+docker build --build-arg GIT_REPO=https://github.com/GovernCRM/website.git -t webstudio-editor .
+docker run -p 5173:5173 \
+  -e AUTH_SECRET=supersecret123 \
+  -e DEFAULT_DEV_EMAIL=admin@webstudio.dev \
+  webstudio-editor
+
 ```
 
 ### 2. Access Editor

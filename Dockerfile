@@ -8,6 +8,7 @@ RUN npm install -g pnpm
 
 # Clone Webstudio
 WORKDIR /app
+
 RUN git clone https://github.com/webstudio-is/webstudio.git
 
 # Clone your GitHub Pages site into the "sites" folder
@@ -20,6 +21,10 @@ RUN chmod +x /app/start.sh
 
 # Install all monorepo dependencies
 WORKDIR /app/webstudio
+
+# env and auth
+COPY .env /app/webstudio/.env
+
 RUN pnpm install
 
 EXPOSE 5173
